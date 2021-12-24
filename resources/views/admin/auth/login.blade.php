@@ -2,9 +2,11 @@
     <x-auth-card>
         アドミン用
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="h-20 fill-current text-pink-500" />
-            </a>
+            <div class="w-28">
+                <a href="/">
+                    <x-application-logo class="h-20 fill-current text-pink-500" />
+                </a>
+            </div>
         </x-slot>
 
         <!-- Session Status -->
