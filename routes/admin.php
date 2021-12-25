@@ -22,10 +22,10 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.welcome');
-});
-Route::resource('owners', OwnersController::class)->middleware('auth:admin');
+// Route::get('/', function () {
+//     return view('admin.welcome');
+// });
+Route::resource('owners', OwnersController::class)->middleware('auth:admin')->except(['show']);
 
 Route::prefix('expired-owners')->
     middleware('auth:admin')->group(function(){
