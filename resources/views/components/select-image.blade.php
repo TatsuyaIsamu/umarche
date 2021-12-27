@@ -4,6 +4,8 @@
     if( $name === 'image3') { $modal = 'modal-3';}
     if( $name === 'image4') { $modal = 'modal-4';}
     if( $name === 'image5') { $modal = 'modal-5';}
+    $cImage = $currentImage ?? '';
+    $cId = $currentId ?? '';
 @endphp
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
     <div class="modal__overlay z-50" tabindex="-1" data-micromodal-close>
@@ -44,8 +46,8 @@
 <div class="flex justify-around items-center mb-4">
     <a class="py-2 px-4 bg-gray-200" data-micromodal-trigger="{{ $modal }}" href='javascript:;'>ファイルを選択</a>
     <div class="w-1/4">
-        <img src="" id="{{ $name }}_thumbnail">
+        <img @if ($cImage) src="{{ asset('storage/products/' . $cImage) }}" @else src="" @endif  id="{{ $name }}_thumbnail">
     </div>
-    <input type="hidden" name="{{ $name }}" id="{{ $name }}_hidden" value="">
+    <input type="hidden" name="{{ $name }}" id="{{ $name }}_hidden" value="{{ $cId }}">
 </div>
 
