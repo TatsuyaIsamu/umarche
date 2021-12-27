@@ -24,9 +24,9 @@ use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 |
 */
 
-Route::get('/', function () {
-    return view('owner.welcome');
-});
+// Route::get('/', function () {
+//     return view('owner.welcome');
+// });
 
 Route::prefix('shops')->
     middleware('auth:owners')->group(function(){
@@ -43,9 +43,9 @@ Route::get('/dashboard', function () {
     return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
 
-Route::get('/register', [RegisteredUserController::class, 'create'])
-                ->middleware('guest')
-                ->name('register');
+// Route::get('/register', [RegisteredUserController::class, 'create'])
+//                 ->middleware('guest')
+//                 ->name('register');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
