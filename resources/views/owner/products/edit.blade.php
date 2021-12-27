@@ -10,7 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                    <x-flash-message status="session('status')" />
                     <form action="{{ route('owner.products.update', ['product' => $product->id ]) }}" method="post">
+                        @method('PUT')
                         @csrf
                         <div class="-m-2">
                             <div class="p-2 w-1/2 mx-auto">
@@ -40,7 +42,7 @@
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
                                     <label for="current_quantity" class="leading-7 text-sm text-gray-600">初期在庫</label>
-                                    <input type="hidden" id="current_quantity" name="quantity" value="{{ $product->quantity }}" >
+                                    <input type="hidden" id="current_quantity" name="current_quantity" value="{{ $quantity }}" >
                                     <div class="w-full bg-gray-100 bg-opacity-50 rounded text-base outline-none text-gray-700 py-1 px-3 leading-8">
                                         {{ $quantity }}
                                     </div>
@@ -96,7 +98,7 @@
                         <x-select-image name="image5" :images="$images" currentId="{{ $product->image1 }}" currentImage="{{ $product->imageFirst->filename ?? '' }}"/>
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative  flex justify-around">
-                                <div><input type="radio" name="is_selling" value="1" class="mr-2" @if ($product->is_selling === 1){ checked } @endif  >販売中</div>
+                                <div><input type="radio" name="is_selling" value="1" class="mr-2" @if ($product->is_selling === 0){ checked } @endif  >販売中</div>
                                 <div><input type="radio" name="is_selling" value="0" class="mr-2" @if ($product->is_selling === 1){ checked } @endif >停止中</div>
                             </div>
                         </div>
