@@ -28,6 +28,7 @@ Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServic
 Route::middleware('auth:users')->group(function(){
         Route::get('/', [ItemController::class, 'index'])->name('items.index');
         Route::get('show/{item}', [ItemController::class, 'show'])->name('items.show');
+        Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
     });
 
 
