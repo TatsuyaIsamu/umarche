@@ -19,14 +19,14 @@ class ShopSeeder extends Seeder
                 'name' => 'ここに店名が入ります',
                 'owner_id' => 1,
                 'information' => 'ここにお店の情報がはいります',
-                'filename' => '',
+                'filename' => 'sample1.jpg',
                 'is_selling' => true,
             ],
             [
                 'name' => 'ここに店名が入ります',
                 'owner_id' => 2,
                 'information' => 'ここにお店の情報がはいります',
-                'filename' => '',
+                'filename' => 'sample2.jpg',
                 'is_selling' => true,
             ],
         ]);
