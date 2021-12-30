@@ -61,7 +61,7 @@ class CartController extends Controller
             $quantity = Stock::where('product_id', $product->id)->sum('quantity');
 
             if ($product->pivot->quantity > $quantity) {
-                return view('user.cart.index');
+                return redirect()->route('user.cart.index');
             } else {
                 $lineItem = [
                     'name' => $product->name,
@@ -73,7 +73,7 @@ class CartController extends Controller
                 array_push($lineItems, $lineItem);
             }
         }
-
+        // dd($lineItems);
         foreach($products as $product) {
             Stock::create([
                 'product_id' => $product->id,
@@ -81,8 +81,6 @@ class CartController extends Controller
                 'quantity' => $product->pivot->quantity * -1,
             ]);
         }
-
-        dd('test');
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
@@ -92,8 +90,10 @@ class CartController extends Controller
             'cancel_url' => route('user.cart.index'),
         ]);
 
+
         $publicKey = env('STRIPE_PUBLIC_KEY');
 
+        // dd($session);
         return view('user.checkout',
         compact('session', 'publicKey'));
     }
