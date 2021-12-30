@@ -40,7 +40,7 @@
                         <div class="my-2 mb-4">
                         小計： {{ number_format($totalPrice) }} <span class="text-sm text-gray-700">円（税込）</span>
                         </div>
-                        <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="location.href='{{ route('user.cart.checkout') }}'">
+                        <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="location.href='{{ route('user.cart.cancel') }}'">
                         購入する
                         </button>
                     </div>
